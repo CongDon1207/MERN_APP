@@ -8,10 +8,15 @@ const app = express();
 
 connectDB(); // ket noi vs mongo
 
-app.use("/api/task", taskRouters);
+app.use(express.json());
+app.use("/api/tasks", taskRouters);
 
 const PORT = process.env.PORT || 5001
-app.listen(PORT, () => {
-    console.log(`Dang chay tren cong ${PORT}`);
+
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Dang chay tren cong ${PORT}`);
+    })
 })
+
 
