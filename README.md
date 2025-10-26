@@ -1,124 +1,253 @@
-# A fully hand-coded project
+# TodoX - MERN Stack Todo Application
 
-## TECH (MERN)
-
-### Backend:
-- Node.js 
-- Express.js v4.18.2
-- Mongoose v8.19.2
-- dotenv v17.2.3
-
-### Frontend:
-- React v19.1.1
-- Vite v7.1.7
-- Tailwind CSS v4.1.15
-- shadcn/ui components
-- Lucide React v0.546.0
-- Axios v1.12.2
-- React Router v7.9.4
-
-### Database: 
-- MongoDB
+Ứng dụng quản lý công việc (Todo App) được xây dựng hoàn toàn bằng tay với MERN stack, UI hiện đại với Tailwind CSS và shadcn/ui components.
 
 ---
 
-## Hướng dẫn cài đặt
+## 📁 Cấu trúc thư mục
 
-### 1. Cài đặt Backend
+```
+todoX/
+├── AGENTS.md                          # Quy tắc cho AI coding agents
+├── README.md                          # File này
+├── backend/                           # Server Node.js + Express + MongoDB
+│   ├── package.json
+│   └── src/
+│       ├── server.js                  # Entry point của server
+│       ├── config/
+│       │   └── db.js                  # Kết nối MongoDB
+│       ├── controller/
+│       │   └── tasksControllers.js    # Controller xử lý logic tasks
+│       ├── model/
+│       │   └── Task.js                # Schema MongoDB cho Task
+│       └── routes/
+│           └── taskRouters.js         # Định nghĩa API routes
+│
+└── frontend/                          # React + Vite + Tailwind CSS
+    ├── package.json
+    ├── vite.config.js                 # Cấu hình Vite
+    ├── tailwind.config.js             # Cấu hình Tailwind CSS
+    ├── components.json                # Cấu hình shadcn/ui
+    ├── eslint.config.js
+    ├── jsconfig.json
+    ├── index.html
+    ├── public/
+    └── src/
+        ├── main.jsx                   # Entry point của React
+        ├── App.jsx                    # Component chính
+        ├── index.css                  # Global styles
+        ├── assets/                    # Hình ảnh, fonts, v.v.
+        ├── components/                # React components
+        │   ├── AddTask.jsx
+        │   ├── DateTimeFilter.jsx
+        │   ├── Footer.jsx
+        │   ├── Header.jsx
+        │   ├── StatsAndFilter.jsx
+        │   ├── TaskCard.jsx
+        │   ├── TaskEmptyState.jsx
+        │   ├── TaskList.jsx
+        │   ├── TaskListPagination.jsx
+        │   └── ui/                    # shadcn/ui components
+        │       ├── badge.jsx
+        │       ├── button.jsx
+        │       ├── card.jsx
+        │       ├── command.jsx
+        │       ├── dialog.jsx
+        │       ├── input.jsx
+        │       ├── pagination.jsx
+        │       └── popover.jsx
+        ├── lib/
+        │   ├── axios.js               # Axios instance config
+        │   ├── data.js                # Constants & data
+        │   └── utils.js               # Utility functions
+        └── pages/
+            ├── HomePage.jsx           # Trang chính
+            └── NotFound.jsx           # Trang 404
+```
+
+---
+
+## 🛠️ TECH STACK (MERN)
+
+### Backend:
+- **Node.js** - JavaScript runtime
+- **Express.js** `^4.18.2` - Web framework
+- **Mongoose** `^8.19.2` - MongoDB ODM
+- **dotenv** `^17.2.3` - Quản lý biến môi trường
+- **cors** `^2.8.5` - Cross-Origin Resource Sharing
+
+**DevDependencies:**
+- **nodemon** `^3.1.10` - Auto-reload server khi dev
+
+### Frontend:
+- **React** `^19.1.1` - UI library
+- **Vite** `^7.1.7` - Build tool & dev server
+- **Tailwind CSS** `^4.1.15` - Utility-first CSS framework
+- **@tailwindcss/vite** `^4.1.15` - Vite plugin cho Tailwind
+- **shadcn/ui** - Component library (Radix UI based)
+- **Lucide React** `^0.546.0` - Icon library
+- **Axios** `^1.12.2` - HTTP client
+- **React Router** `^7.9.4` - Routing
+- **Sonner** `^2.0.7` - Toast notifications
+
+**Radix UI Components:**
+- `@radix-ui/react-dialog` `^1.1.15`
+- `@radix-ui/react-popover` `^1.1.15`
+- `@radix-ui/react-slot` `^1.2.3`
+- `cmdk` `^1.1.1` - Command palette
+
+**Utility Libraries:**
+- `tailwind-merge` `^3.3.1` - Merge Tailwind classes
+- `clsx` `^2.1.1` - Conditional classnames
+- `class-variance-authority` `^0.7.1` - CVA cho variants
+
+**DevDependencies:**
+- `@vitejs/plugin-react` `^5.0.4`
+- `eslint` `^9.36.0` + plugins
+- `@types/node` `^24.9.1`
+- `@types/react` `^19.1.16`
+- `@types/react-dom` `^19.1.9`
+- `globals` `^16.4.0`
+- `tw-animate-css` `^1.4.0`
+
+### Database: 
+- **MongoDB** - NoSQL database
+
+---
+
+## 📦 Hướng dẫn cài đặt
+
+> **Đúng rồi!** Tất cả dependencies đã được khai báo trong `package.json`. Bạn chỉ cần chạy `npm install` là xong.
+
+### 1. Clone repository
+
+```bash
+git clone <repository-url>
+cd todoX
+```
+
+### 2. Cài đặt Backend
 
 ```bash
 cd backend
 npm install
 ```
 
-**Các thư viện chính đã được cài đặt:**
+Tất cả dependencies đã được khai báo trong `backend/package.json`:
+- `express`, `mongoose`, `dotenv`, `cors`
+- `nodemon` (dev)
 
-```bash
-# Dependencies
-npm install express@^4.18.2          # Web framework
-npm install mongoose@^8.19.2         # MongoDB ODM
-npm install dotenv@^17.2.3           # Environment variables
-
-# DevDependencies
-npm install -D nodemon@^3.1.10       # Auto-reload server
-```
-
-### 2. Cài đặt Frontend
+### 3. Cài đặt Frontend
 
 ```bash
 cd frontend
 npm install
 ```
 
-**Các thư viện chính đã được cài đặt:**
+Tất cả dependencies đã được khai báo trong `frontend/package.json`:
+- React, Vite, Tailwind CSS, shadcn/ui components, Axios, React Router, v.v.
 
-```bash
-# Core Dependencies
-npm install react@^19.1.1 react-dom@^19.1.1
-npm install vite@^7.1.7
-npm install axios@^1.12.2            # HTTP client
-npm install react-router@^7.9.4     # Routing
+> **Lưu ý:** Các shadcn/ui components đã được thêm vào thư mục `src/components/ui/`. Không cần chạy lại `npx shadcn add`.
 
-# Tailwind CSS & Styling
-npm install tailwindcss@^4.1.15
-npm install @tailwindcss/vite@^4.1.15
-npm install tailwind-merge@^3.3.1    # Merge Tailwind classes
-npm install clsx@^2.1.1              # Conditional classnames
-npm install class-variance-authority@^0.7.1  # CVA for variants
+### 4. Cấu hình môi trường
 
-# shadcn/ui & Radix UI Components
-npx shadcn@latest init                        # Initialize shadcn/ui
-npm install @radix-ui/react-dialog@^1.1.15
-npm install @radix-ui/react-popover@^1.1.15
-npm install @radix-ui/react-slot@^1.2.3
-npm install cmdk@^1.1.1              # Command palette
+Tạo file `.env` trong thư mục `backend/`:
 
-# Icons & Notifications
-npm install lucide-react@^0.546.0    # Icon library
-npm install sonner@^2.0.7            # Toast notifications
-
-# DevDependencies
-npm install -D @vitejs/plugin-react@^5.0.4
-npm install -D eslint@^9.36.0
-npm install -D @eslint/js@^9.36.0
-npm install -D eslint-plugin-react-hooks@^5.2.0
-npm install -D eslint-plugin-react-refresh@^0.4.22
-npm install -D @types/node@^24.9.1
-npm install -D @types/react@^19.1.16
-npm install -D @types/react-dom@^19.1.9
-npm install -D globals@^16.4.0
-npm install -D tw-animate-css@^1.4.0
-```
-
-**Lệnh cài shadcn/ui components đã sử dụng:**
-
-```bash
-npx shadcn@latest add button
-npx shadcn@latest add card
-npx shadcn@latest add input
-npx shadcn@latest add dialog
-npx shadcn@latest add badge
-npx shadcn@latest add popover
-npx shadcn@latest add command
-npx shadcn@latest add pagination
+```env
+PORT=5001
+MONGO_URI=mongodb://localhost:27017/todoX
+# hoặc
+MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/todoX
+NODE_ENV=development
 ```
 
 ---
 
-## Chạy ứng dụng
+## 🚀 Chạy ứng dụng
 
-### Backend
+### Backend (Terminal 1)
 ```bash
 cd backend
-npm run dev      # Development mode with nodemon
+npm run dev      # Development mode với nodemon (auto-reload)
 # hoặc
 npm start        # Production mode
 ```
 
-### Frontend
+Server sẽ chạy tại: `http://localhost:5001`
+
+### Frontend (Terminal 2)
 ```bash
 cd frontend
 npm run dev      # Development mode
-npm run build    # Build for production
+```
+
+Ứng dụng sẽ chạy tại: `http://localhost:5173` (hoặc port khác nếu 5173 đã dùng)
+
+### Build production
+
+```bash
+cd frontend
+npm run build    # Build vào thư mục dist/
 npm run preview  # Preview production build
 ```
+
+---
+
+## 🌐 API Endpoints
+
+### Tasks API (`/api/tasks`)
+
+| Method | Endpoint | Mô tả | Query Params |
+|--------|----------|-------|--------------|
+| GET | `/api/tasks` | Lấy danh sách tasks | `?filter=today\|week\|month\|all` |
+| POST | `/api/tasks` | Tạo task mới | Body: `{ title: string }` |
+| PUT | `/api/tasks/:id` | Cập nhật task | Body: `{ title, status, completedAt }` |
+| DELETE | `/api/tasks/:id` | Xóa task | - |
+
+---
+
+## 📝 Features
+
+- ✅ Thêm, sửa, xóa task
+- ✅ Đánh dấu hoàn thành/chưa hoàn thành
+- ✅ Lọc theo trạng thái (Tất cả, Đang làm, Hoàn thành)
+- ✅ Lọc theo thời gian (Hôm nay, Tuần này, Tháng này, Tất cả)
+- ✅ Phân trang danh sách tasks
+- ✅ Thống kê số lượng tasks
+- ✅ UI hiện đại với Tailwind CSS & shadcn/ui
+- ✅ Toast notifications
+- ✅ Responsive design
+
+---
+
+## 🎨 UI Components (shadcn/ui)
+
+Các components đã được thêm vào `src/components/ui/`:
+- `button` - Nút bấm với nhiều variants
+- `card` - Card container
+- `input` - Input field
+- `dialog` - Modal dialog
+- `badge` - Badge/tag component
+- `popover` - Popover dropdown
+- `command` - Command palette
+- `pagination` - Phân trang
+
+---
+
+## 🧑‍💻 Development Notes
+
+- Backend sử dụng **ES Modules** (`"type": "module"` trong package.json)
+- Frontend sử dụng **alias path** `@/` cho import (đã config trong `vite.config.js`)
+- CORS đã được cấu hình cho phép frontend (localhost:5173) gọi API backend
+- Tailwind CSS v4 sử dụng `@tailwindcss/vite` plugin
+
+---
+
+## 📄 License
+
+ISC
+
+---
+
+**Tác giả:** CongDon1207  
+**Repository:** [MERN_APP](https://github.com/CongDon1207/MERN_APP)
